@@ -1,0 +1,15 @@
+version: '3.2'
+
+services:
+  spring-ci-service:
+    build:
+      context: ../../spring-ci-advanced
+      args:
+        PROJECT_VERSION: ${PROJECT_VERSION}
+        JDK_BASE_IMAGE: ${JDK_BASE_IMAGE}
+    image: "${IMAGE_REGISTRY_URL}/${PROJECT_CODE}/${IMAGE_TYPE}/spring-ci-service:${TAG}"
+    container_name: "spring-ci-service"
+    network_mode: "host"
+    environment:
+      TZ: "Asia/Ho_Chi_Minh"
+    restart: always
